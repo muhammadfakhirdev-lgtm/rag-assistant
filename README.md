@@ -1,19 +1,17 @@
-# 💬 Chatbot template
+# LangChain RAG Chat Assistant
 
-A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+An interactive AI-powered assistant built with Streamlit and LangChain that supports Retrieval-Augmented Generation (RAG) using PDF and DOCX files.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
+---
 
-### How to run it on your own machine
+## Features
+- Upload PDF or DOCX documents
+- Ask context-based questions
+- Remembers chat history per session
+- Works both as a RAG bot or a general AI chat
+- Built with OpenAI GPT model and FAISS vectorstore
 
-1. Install the requirements
+---
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+## Setup Instructions
 
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
