@@ -5,4 +5,5 @@ langchain-community
 python-dotenv
 faiss-cpu
 PyPDF2
+pypdf
 docx2txt
