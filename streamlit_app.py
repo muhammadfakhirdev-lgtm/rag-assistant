@@ -184,15 +184,11 @@ def get_full_chain(retriever):
     
     if retriever:
         # --- RAG Chain Setup ---
-        
         # 1. Define Context Retrieval Runnable
-        # This function takes the chain input (containing 'messages') and uses the last message as the query
-  def retrieve_context(input_dict):
-    query = input_dict["messages"][-1].content
-    docs = retriever.invoke(query)
-    return "\n\n---\n\n".join([doc.page_content for doc in docs])
-
-
+        def retrieve_context(input_dict):
+            query = input_dict["messages"][-1].content
+            docs = retriever.invoke(query)
+            return "\n\n---\n\n".join([doc.page_content for doc in docs])
 
         # Define the map that feeds the context and the messages into the prompt
         context_retriever_runnable = RunnableLambda(retrieve_context)
@@ -205,7 +201,7 @@ def get_full_chain(retriever):
             "Always maintain a conversational tone and use the history for follow-up questions."
             "\n\n--- CONTEXT ---\n{context}\n------------------\n"
         )
-        
+
         # The prompt template structure remains the same, but the system message now includes context placeholder
         rag_prompt = ChatPromptTemplate.from_messages(
             [
@@ -213,7 +209,7 @@ def get_full_chain(retriever):
                 MessagesPlaceholder(variable_name="messages")
             ]
         )
-        
+
         # LCEL structure to pass context and messages to the prompt
         rag_chain = {
             "context": context_retriever_runnable,
