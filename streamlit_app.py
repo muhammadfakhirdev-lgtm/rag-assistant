@@ -189,7 +189,7 @@ def get_full_chain(retriever):
         # This function takes the chain input (containing 'messages') and uses the last message as the query
         def retrieve_context(input_dict):
             query = input_dict["messages"][-1].content
-            docs = retriever.get_relevant_documents(query)
+docs = retriever.invoke(query)
             return "\n\n---\n\n".join([doc.page_content for doc in docs])
 
         # Define the map that feeds the context and the messages into the prompt
